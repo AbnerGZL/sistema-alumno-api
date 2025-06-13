@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cursos - Administración</title>
+</head>
+<body>
+  <h1>Lista de Cursos</h1>
+  <a href="/admin/cursos/nuevo">Crear Nuevo Curso</a>
+  <table border="1" cellpadding="5" cellspacing="0">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% cursos.forEach(curso => { %>
+        <tr>
+          <td><%= curso.id_curso %></td>
+          <td><%= curso.nombre %></td>
+          <td>
+            <a href="/admin/cursos/editar/<%= curso.id_curso %>">Editar</a>
+            <form action="/admin/cursos/eliminar/<%= curso.id_curso %>" method="POST" style="display:inline;">
+              <button type="submit" onclick="return confirm('¿Seguro que quieres eliminar este curso?')">Eliminar</button>
+            </form>
+          </td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+  <a href="/admin">Volver al inicio</a>
+</body>
+</html>

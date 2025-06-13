@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= carrera ? 'Editar Carrera' : 'Crear Carrera' %> - Administración</title>
+</head>
+<body>
+  <h1><%= carrera ? 'Editar Carrera' : 'Crear Carrera' %></h1>
+  <form action="<%= carrera ? '/admin/carreras/editar/' + carrera.id_carrera : '/admin/carreras/nuevo' %>" method="POST">
+    <label for="nombre">Nombre:</label>
+    <input type="text" name="nombre" id="nombre" value="<%= carrera ? carrera.nombre : '' %>" required>
+    <br>
+    <button type="submit"><%= carrera ? 'Actualizar' : 'Crear' %></button>
+  </form>
+  <a href="/admin/carreras">Volver a la lista</a>
+</body>
+</html>

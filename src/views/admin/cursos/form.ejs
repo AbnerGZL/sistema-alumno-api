@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= curso ? 'Editar Curso' : 'Crear Curso' %> - Administración</title>
+</head>
+<body>
+  <h1><%= curso ? 'Editar Curso' : 'Crear Curso' %></h1>
+  <form action="<%= curso ? '/admin/cursos/editar/' + curso.id_curso : '/admin/cursos/nuevo' %>" method="POST">
+    <label for="nombre">Nombre:</label>
+    <input type="text" name="nombre" id="nombre" value="<%= curso ? curso.nombre : '' %>" required>
+    <br>
+    <button type="submit"><%= curso ? 'Actualizar' : 'Crear' %></button>
+  </form>
+  <a href="/admin/cursos">Volver a la lista</a>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= usuario ? 'Editar Usuario' : 'Crear Usuario' %> - Administración</title>
+</head>
+<body>
+  <h1><%= usuario ? 'Editar Usuario' : 'Crear Usuario' %></h1>
+  <form action="<%= usuario ? '/admin/usuarios/editar/' + usuario.id_usuario : '/admin/usuarios/nuevo' %>" method="POST">
+    <label for="id_tipo">Tipo de Usuario:</label>
+    <select name="id_tipo" id="id_tipo" required>
+      <% tipos.forEach(tipo => { %>
+        <option value="<%= tipo.id_tipo %>" <%= usuario && usuario.id_tipo === tipo.id_tipo ? 'selected' : '' %>><%= tipo.nombre %></option>
+      <% }) %>
+    </select>
+    <br>
+    <label for="codigou">Código:</label>
+    <input type="text" name="codigou" id="codigou" value="<%= usuario ? usuario.codigou : '' %>" required>
+    <br>
+    <label for="dni">DNI:</label>
+    <input type="text" name="dni" id="dni" value="<%= usuario ? usuario.dni : '' %>" required>
+    <br>
+    <label for="email">Email:</label>
+    <input type="email" name="email" id="email" value="<%= usuario ? usuario.email : '' %>" required>
+    <br>
+    <label for="contraseña"><%= usuario ? 'Nueva Contraseña (dejar vacío para no cambiar)' : 'Contraseña' %>:</label>
+    <input type="password" name="contraseña" id="contraseña" <%= usuario ? '' : 'required' %>>
+    <br>
+    <button type="submit"><%= usuario ? 'Actualizar' : 'Crear' %></button>
+  </form>
+  <a href="/admin/usuarios">Volver a la lista</a>
+</body>
+</html>

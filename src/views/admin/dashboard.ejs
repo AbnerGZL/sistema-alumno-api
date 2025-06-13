@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Panel de Administración</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    h1 {
+      margin-bottom: 20px;
+    }
+    .dashboard-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .dashboard-links a {
+      display: block;
+      padding: 15px 25px;
+      background-color: #007bff;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+    .dashboard-links a:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <h1>Panel de Administración</h1>
+  <div class="dashboard-links">
+    <a href="/admin/usuarios">Gestionar Usuarios</a>
+    <a href="/admin/carreras">Gestionar Carreras</a>
+    <a href="/admin/profesores">Gestionar Profesores</a>
+    <a href="/admin/cursos">Gestionar Cursos</a>
+  </div>
+</body>
+</html>

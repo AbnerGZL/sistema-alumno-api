@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= profesor ? 'Editar Profesor' : 'Crear Profesor' %> - Administración</title>
+</head>
+<body>
+  <h1><%= profesor ? 'Editar Profesor' : 'Crear Profesor' %></h1>
+  <form action="<%= profesor ? '/admin/profesores/editar/' + profesor.id_profesor : '/admin/profesores/nuevo' %>" method="POST">
+    <label for="nombre">Nombre:</label>
+    <input type="text" name="nombre" id="nombre" value="<%= profesor ? profesor.nombre : '' %>" required>
+    <br>
+    <label for="apellido">Apellido:</label>
+    <input type="text" name="apellido" id="apellido" value="<%= profesor ? profesor.apellido : '' %>" required>
+    <br>
+    <button type="submit"><%= profesor ? 'Actualizar' : 'Crear' %></button>
+  </form>
+  <a href="/admin/profesores">Volver a la lista</a>
+</body>
+</html>

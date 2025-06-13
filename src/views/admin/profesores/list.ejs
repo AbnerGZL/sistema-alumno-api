@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Profesores - Administración</title>
+</head>
+<body>
+  <h1>Lista de Profesores</h1>
+  <a href="/admin/profesores/nuevo">Crear Nuevo Profesor</a>
+  <table border="1" cellpadding="5" cellspacing="0">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% profesores.forEach(profesor => { %>
+        <tr>
+          <td><%= profesor.id_profesor %></td>
+          <td><%= profesor.nombre %></td>
+          <td><%= profesor.apellido %></td>
+          <td>
+            <a href="/admin/profesores/editar/<%= profesor.id_profesor %>">Editar</a>
+            <form action="/admin/profesores/eliminar/<%= profesor.id_profesor %>" method="POST" style="display:inline;">
+              <button type="submit" onclick="return confirm('¿Seguro que quieres eliminar este profesor?')">Eliminar</button>
+            </form>
+          </td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+  <a href="/admin">Volver al inicio</a>
+</body>
+</html>

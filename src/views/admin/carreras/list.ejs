@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Carreras - Administración</title>
+</head>
+<body>
+  <h1>Lista de Carreras</h1>
+  <a href="/admin/carreras/nuevo">Crear Nueva Carrera</a>
+  <table border="1" cellpadding="5" cellspacing="0">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% carreras.forEach(carrera => { %>
+        <tr>
+          <td><%= carrera.id_carrera %></td>
+          <td><%= carrera.nombre %></td>
+          <td>
+            <a href="/admin/carreras/editar/<%= carrera.id_carrera %>">Editar</a>
+            <form action="/admin/carreras/eliminar/<%= carrera.id_carrera %>" method="POST" style="display:inline;">
+              <button type="submit" onclick="return confirm('¿Seguro que quieres eliminar esta carrera?')">Eliminar</button>
+            </form>
+          </td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+  <a href="/admin">Volver al inicio</a>
+</body>
+</html>
