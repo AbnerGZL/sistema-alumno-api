@@ -1,47 +1,47 @@
 export default (sequelize, DataTypes) => {
-  const Matricula = sequelize.define('Matricula', {
-    id_matricula: {
+  const Matricula = sequelize.define('MATRICULA', {
+    ID_MATRICULA: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true
     },
-    id_estudiante: {
+    ID_ESTUDIANTE: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: 'estudiantes',
-        key: 'id_estudiante'
+        model: 'ESTUDIANTES',
+        key: 'ID_ESTUDIANTE'
       }
     },
-    id_carrera: {
+    ID_CARRERA: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: 'carreras',
-        key: 'id_carrera'
+        model: 'CARRERAS',
+        key: 'ID_CARRERA'
       }
     },
-    fecha_matricula: {
+    FECHA_MATRICULA: {
       type: DataTypes.DATE,
       allowNull: false
     },
-    estado: {
+    ESTADO: {
       type: DataTypes.STRING(45),
-      defaultValue: 'activo'
+      defaultValue: 'ACTIVO'
     },
-    periodo: {
+    PERIODO: {
       type: DataTypes.STRING(45),
       allowNull: false
     },
-    estatus: {
+    ESTATUS: {
       type: DataTypes.BOOLEAN,
       defaultValue: true
     }
   }, {
-    tableName: 'matriculas',
+    tableName: 'MATRICULAS',
     timestamps: true,
-    createdAt: 'fecha_creacion',
-    updatedAt: 'fecha_actualizacion'
+    createdAt: 'FECHA_CREACION',
+    updatedAt: 'FECHA_ACTUALIZACION'
   });
 
   return Matricula;

@@ -1,23 +1,23 @@
 export default (sequelize, DataTypes) => {
-  const TipoUsuario = sequelize.define('TipoUsuario', {
-    id_tipo: {
+  const TipoUsuario = sequelize.define('TIPOUSUARIO', {
+    ID_TIPO: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true
     },
-    nombre: {
+    NOMBRE: {
       type: DataTypes.STRING(45),
       allowNull: false
     },
-    estatus: {
+    ESTATUS: {
       type: DataTypes.BOOLEAN,
       defaultValue: true
     }
   }, {
-    tableName: 'tipousuario',
+    tableName: 'TIPOUSUARIO',
     timestamps: true,
-    createdAt: 'fecha_creacion',
-    updatedAt: 'fecha_actualizacion',
+    createdAt: 'FECHA_CREACION',
+    updatedAt: 'FECHA_ACTUALIZACION',
     underscored: true
   });
 

@@ -1,44 +1,44 @@
 export default (sequelize, DataTypes) => {
-  const Pago = sequelize.define('Pago', {
-    id_pago: {
+  const Pago = sequelize.define('PAGO', {
+    ID_PAGO: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true
     },
-    id_matricula: {
+    ID_MATRICULA: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: 'matriculas',
-        key: 'id_matricula'
+        model: 'MATRICULAS',
+        key: 'ID_MATRICULA'
       }
     },
-    fecha_pago: {
+    FECHA_PAGO: {
       type: DataTypes.DATE,
       allowNull: false
     },
-    monto: {
+    MONTO: {
       type: DataTypes.DECIMAL(10, 2),
       allowNull: false
     },
-    formato: {
+    FORMATO: {
       type: DataTypes.STRING(45)
     },
-    recibo: {
+    RECIBO: {
       type: DataTypes.STRING(45)
     },
-    observacion: {
+    OBSERVACION: {
       type: DataTypes.STRING(100)
     },
-    estatus: {
+    ESTATUS: {
       type: DataTypes.BOOLEAN,
       defaultValue: true
     }
   }, {
-    tableName: 'pagos',
+    tableName: 'PAGOS',
     timestamps: true,
-    createdAt: 'fecha_creacion',
-    updatedAt: 'fecha_actualizacion'
+    createdAt: 'FECHA_CREACION',
+    updatedAt: 'FECHA_ACTUALIZACION'
   });
 
   return Pago;

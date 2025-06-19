@@ -1,49 +1,49 @@
 export default (sequelize, DataTypes) => {
-  const Carrera = sequelize.define('Carrera', {
-    id_carrera: {
+  const Carrera = sequelize.define('CARRERA', {
+    ID_CARRERA: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true
     },
-    nombre: {
+    NOMBRE: {
       type: DataTypes.STRING(45),
       allowNull: false
     },
-    codigou: {
+    CODIGOU: {
       type: DataTypes.STRING(45),
       allowNull: false,
       unique: true
     },
-    descripcion: {
+    DESCRIPCION: {
       type: DataTypes.STRING(200)
     },
-    duracion: {
+    DURACION: {
       type: DataTypes.STRING(45)
     },
-    total_creditos: {
+    TOTAL_CREDITOS: {
       type: DataTypes.INTEGER
     },
-    titulo: {
+    TITULO: {
       type: DataTypes.STRING(50)
     },
-    grado: {
+    GRADO: {
       type: DataTypes.STRING(45)
     },
-    departamento: {
+    DEPARTAMENTO: {
       type: DataTypes.STRING(45)
     },
-    modalidad: {
+    MODALIDAD: {
       type: DataTypes.STRING(45)
     },
-    estatus: {
+    ESTATUS: {
       type: DataTypes.BOOLEAN,
       defaultValue: true
     }
   }, {
-    tableName: 'carreras',
+    tableName: 'CARRERAS',
     timestamps: true,
-    createdAt: 'fecha_creacion',
-    updatedAt: 'fecha_actualizacion'
+    createdAt: 'FECHA_CREACION',
+    updatedAt: 'FECHA_ACTUALIZACION'
   });
 
   return Carrera;

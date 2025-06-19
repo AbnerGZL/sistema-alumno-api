@@ -1,49 +1,49 @@
 export default (sequelize, DataTypes) => {
-  const Curso = sequelize.define('Curso', {
-    id_curso: {
+  const Curso = sequelize.define('CURSO', {
+    ID_CURSO: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true
     },
-    id_profesor: {
+    ID_PROFESOR: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: 'profesores',
-        key: 'id_profesor'
+        model: 'PROFESORES',
+        key: 'ID_PROFESOR'
       }
     },
-    codigou: {
+    CODIGOU: {
       type: DataTypes.STRING(5),
       allowNull: false,
       unique: true
     },
-    nombre: {
+    NOMBRE: {
       type: DataTypes.STRING(45),
       allowNull: false
     },
-    descripcion: {
+    DESCRIPCION: {
       type: DataTypes.STRING(45)
     },
-    creditos: {
+    CREDITOS: {
       type: DataTypes.INTEGER,
       allowNull: false
     },
-    duracion: {
+    DURACION: {
       type: DataTypes.STRING(45)
     },
-    horas: {
+    HORAS: {
       type: DataTypes.INTEGER
     },
-    estatus: {
+    ESTATUS: {
       type: DataTypes.BOOLEAN,
       defaultValue: true
     }
   }, {
-    tableName: 'cursos',
+    tableName: 'CURSOS',
     timestamps: true,
-    createdAt: 'fecha_creacion',
-    updatedAt: 'fecha_actualizacion'
+    createdAt: 'FECHA_CREACION',
+    updatedAt: 'FECHA_ACTUALIZACION'
   });
 
   return Curso;

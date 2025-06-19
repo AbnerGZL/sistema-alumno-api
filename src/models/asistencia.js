@@ -1,52 +1,52 @@
 export default (sequelize, DataTypes) => {
-  const Asistencia = sequelize.define('Asistencia', {
-    id_asistencia: {
+  const ASISTENCIA = sequelize.define('ASISTENCIA', {
+    ID_ASISTENCIA: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true
     },
-    id_matricula: {
+    ID_MATRICULA: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: 'matriculas',
-        key: 'id_matricula'
+        model: 'MATRICULAS',
+        key: 'ID_MATRICULA'
       }
     },
-    id_profesor: {
+    ID_PROFESOR: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: 'profesores',
-        key: 'id_profesor'
+        model: 'PROFESORES',
+        key: 'ID_PROFESOR'
       }
     },
-    id_curso: {
+    ID_CURSO: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: 'cursos',
-        key: 'id_curso'
+        model: 'CURSOS',
+        key: 'ID_CURSO'
       }
     },
-    fecha: {
+    FECHA: {
       type: DataTypes.DATE,
       allowNull: false
     },
-    estado: {
+    ESTADO: {
       type: DataTypes.STRING(1),
       allowNull: false
     },
-    estatus: {
+    ESTATUS: {
       type: DataTypes.BOOLEAN,
       defaultValue: true
     }
   }, {
-    tableName: 'asistencias',
+    tableName: 'ASISTENCIAS',
     timestamps: true,
-    createdAt: 'fecha_creacion',
-    updatedAt: 'fecha_actualizacion'
+    createdAt: 'FECHA_CREACION',
+    updatedAt: 'FECHA_ACTUALIZACION'
   });
 
-  return Asistencia;
+  return ASISTENCIA;
 };

@@ -1,31 +1,31 @@
 export default (sequelize, DataTypes) => {
-  const Estudiante = sequelize.define('Estudiante', {
-    id_estudiante: {
+  const Estudiante = sequelize.define('ESTUDIANTE', {
+    ID_ESTUDIANTE: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true
     },
-    id_usuario: {
+    ID_USUARIO: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: 'usuarios',
-        key: 'id_usuario'
+        model: 'USUARIOS',
+        key: 'ID_USUARIO'
       }
     },
-    carrera: {
+    CARRERA: {
       type: DataTypes.STRING(100),
       allowNull: true
     },
-    estatus: {
+    ESTATUS: {
       type: DataTypes.BOOLEAN,
       defaultValue: true
     }
   }, {
-    tableName: 'estudiantes',
+    tableName: 'ESTUDIANTES',
     timestamps: true,
-    createdAt: 'fecha_creacion',
-    updatedAt: 'fecha_actualizacion'
+    createdAt: 'FECHA_CREACION',
+    updatedAt: 'FECHA_ACTUALIZACION'
   });
 
   return Estudiante;

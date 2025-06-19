@@ -1,49 +1,49 @@
 export default (sequelize, DataTypes) => {
-  const Profesor = sequelize.define('Profesor', {
-    id_profesor: {
+  const Profesor = sequelize.define('PROFESOR', {
+    ID_PROFESOR: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true
     },
-    id_usuario: {
+    ID_USUARIO: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: 'usuarios',
-        key: 'id_usuario'
+        model: 'USUARIOS',
+        key: 'ID_USUARIO'
       }
     },
-    nombre: {
+    NOMBRE: {
       type: DataTypes.STRING(45),
       allowNull: false
     },
-    apellidos: {
+    APELLIDOS: {
       type: DataTypes.STRING(45),
       allowNull: false
     },
-    especialidad: {
+    ESPECIALIDAD: {
       type: DataTypes.STRING(45),
       allowNull: false
     },
-    estado: {
+    ESTADO: {
       type: DataTypes.STRING(45),
       defaultValue: 'activo'
     },
-    correo: {
+    CORREO: {
       type: DataTypes.STRING(100),
       validate: {
         isEmail: true
       }
     },
-    estatus: {
+    ESTATUS: {
       type: DataTypes.BOOLEAN,
       defaultValue: true
     }
   }, {
-    tableName: 'profesores',
+    tableName: 'PROFESORES',
     timestamps: true,
-    createdAt: 'fecha_creacion',
-    updatedAt: 'fecha_actualizacion'
+    createdAt: 'FECHA_CREACION',
+    updatedAt: 'FECHA_ACTUALIZACION'
   });
 
   return Profesor;

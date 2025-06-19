@@ -1,29 +1,24 @@
 export default (sequelize, DataTypes) => {
   const Usuario = sequelize.define('Usuario', {
-    id_usuario: {
+    ID_USUARIO: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true
     },
-    id_tipo: {
+    ID_TIPO: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: 'tipoUsuario',
-        key: 'id_tipo'
+        model: 'TIPOUSUARIO',
+        key: 'ID_TIPO'
       }
     },
-    codigou: {
+    CODIGOU: {
       type: DataTypes.STRING(6),
       allowNull: false,
       unique: true
     },
-    dni: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: true
-    },
-    email: {
+    EMAIL: {
       type: DataTypes.STRING(45),
       allowNull: false,
       unique: true,
@@ -31,19 +26,19 @@ export default (sequelize, DataTypes) => {
         isEmail: true
       }
     },
-    contraseña: {
+    CONTRASEÑA: {
       type: DataTypes.STRING,
       allowNull: false
     },
-    estatus: {
+    ESTATUS: {
       type: DataTypes.BOOLEAN,
       defaultValue: true
     }
   }, {
-    tableName: 'usuarios',
+    tableName: 'USUARIOS',
     timestamps: true,
-    createdAt: 'fecha_creacion',
-    updatedAt: 'fecha_actualizacion'
+    createdAt: 'FECHA_CREACION',
+    updatedAt: 'FECHA_ACTUALIZACION'
   });
 
   return Usuario;
