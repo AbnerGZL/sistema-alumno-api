@@ -8,12 +8,8 @@ export default (sequelize, DataTypes) => {
     ID_PROFESOR: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      references: {
-        model: 'PROFESORES',
-        key: 'ID_PROFESOR'
-      }
     },
-    CODIGOU: {
+    CODIGOCU: {
       type: DataTypes.STRING(5),
       allowNull: false,
       unique: true
@@ -30,10 +26,12 @@ export default (sequelize, DataTypes) => {
       allowNull: false
     },
     DURACION: {
-      type: DataTypes.STRING(45)
+      type: DataTypes.STRING(45),
+      allowNull: false
     },
     HORAS: {
-      type: DataTypes.INTEGER
+      type: DataTypes.INTEGER,
+      allowNull: false
     },
     ESTATUS: {
       type: DataTypes.BOOLEAN,

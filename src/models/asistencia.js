@@ -8,26 +8,14 @@ export default (sequelize, DataTypes) => {
     ID_MATRICULA: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      references: {
-        model: 'MATRICULAS',
-        key: 'ID_MATRICULA'
-      }
     },
     ID_PROFESOR: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      references: {
-        model: 'PROFESORES',
-        key: 'ID_PROFESOR'
-      }
     },
     ID_CURSO: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      references: {
-        model: 'CURSOS',
-        key: 'ID_CURSO'
-      }
     },
     FECHA: {
       type: DataTypes.DATE,

@@ -26,9 +26,9 @@ if (process.env.NODE_ENV === 'development') {
   console.log('');
 }
 
-app.use(cors({
-  origin: process.env.ALLOWED_ORIGINS || '*',
-  methods: process.env.CORS_METHODS || 'GET',
-}));
+// app.use(cors({
+//   origin: process.env.ALLOWED_ORIGINS || '*',
+//   methods: process.env.CORS_METHODS || 'GET',
+// }));
 
 export default app;

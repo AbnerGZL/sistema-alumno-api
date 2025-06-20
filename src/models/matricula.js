@@ -8,18 +8,10 @@ export default (sequelize, DataTypes) => {
     ID_ESTUDIANTE: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      references: {
-        model: 'ESTUDIANTES',
-        key: 'ID_ESTUDIANTE'
-      }
     },
     ID_CARRERA: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      references: {
-        model: 'CARRERAS',
-        key: 'ID_CARRERA'
-      }
     },
     FECHA_MATRICULA: {
       type: DataTypes.DATE,
@@ -33,6 +25,10 @@ export default (sequelize, DataTypes) => {
       type: DataTypes.STRING(45),
       allowNull: false
     },
+    CICLO: {
+      type: DataTypes.STRING(45),
+      allowNull: false
+    },    
     ESTATUS: {
       type: DataTypes.BOOLEAN,
       defaultValue: true

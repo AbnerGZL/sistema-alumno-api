@@ -8,10 +8,6 @@ export default (sequelize, DataTypes) => {
     ID_MATRICULA: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      references: {
-        model: 'MATRICULAS',
-        key: 'ID_MATRICULA'
-      }
     },
     FECHA_PAGO: {
       type: DataTypes.DATE,

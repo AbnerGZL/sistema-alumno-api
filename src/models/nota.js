@@ -22,7 +22,7 @@ export default (sequelize, DataTypes) => {
     allowNull: false,
   },
   CONDICION: {
-    type: DataTypes.VARCHAR(45),
+    type: DataTypes.STRING(45),
     allowNull: false,
   },
   ESTATUS: {

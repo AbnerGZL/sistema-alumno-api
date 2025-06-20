@@ -11,7 +11,8 @@ import defineMatricula from './matricula.js';
 import defineAsistencia from './asistencia.js';
 import defineNota from './nota.js';
 import definePago from './pago.js';
-import DatosEstudiante from './DatosEstudiante.js';
+import NotaDetalle from './NotaDetalle.js';
+
 
 const models = {
   TipoUsuario: defineTipoUsuario(sequelize, DataTypes),
@@ -24,7 +25,6 @@ const models = {
   Asistencia: defineAsistencia(sequelize, DataTypes),
   Nota: defineNota(sequelize, DataTypes),
   Pago: definePago(sequelize, DataTypes),
-  DatosEstudiante: DatosEstudiante(sequelize, DataTypes),
   NotaDetalle: NotaDetalle(sequelize, DataTypes),
 };
 
@@ -35,8 +35,8 @@ Object.values(models).forEach(model => {
 });
 
 models.Usuario.belongsTo(models.TipoUsuario, { foreignKey: 'ID_TIPO' });
-models.Profesor.hasTo(models.Usuario, { foreignKey: 'ID_USUARIO' });
-models.Estudiante.hasTo(models.Usuario, { foreignKey: 'ID_USUARIO' });
+models.Profesor.hasOne(models.Usuario, { foreignKey: 'ID_USUARIO' });
+models.Estudiante.hasOne(models.Usuario, { foreignKey: 'ID_USUARIO' });
 models.Curso.belongsTo(models.Profesor, { foreignKey: 'ID_PROFESOR' });
 models.Matricula.belongsTo(models.Carrera, { foreignKey: 'ID_CARRERA' });
 models.Matricula.belongsTo(models.Estudiante, { foreignKey: 'ID_ESTUDIANTE' });
@@ -45,8 +45,10 @@ models.Asistencia.belongsTo(models.Curso, { foreignKey: 'ID_CURSO' });
 models.Asistencia.belongsTo(models.Profesor, { foreignKey: 'ID_PROFESOR' });
 models.Nota.belongsTo(models.Matricula, { foreignKey: 'ID_MATRICULA' });
 models.Nota.belongsTo(models.Curso, { foreignKey: 'ID_CURSO' });
-models.Pago.hasTo(models.Matricula, { foreignKey: 'ID_MATRICULA' });
-models.DatosEstudiante.hasTo(models.Estudiante, { foreignKey: 'ID_ESTUDIANTE' });
+
+models.Nota.hasMany(models.NotaDetalle, { foreignKey: 'ID_NOTA' });
+models.Pago.hasOne(models.Matricula, { foreignKey: 'ID_MATRICULA' });
+
 models.NotaDetalle.belongsTo(models.Nota, { foreignKey: 'ID_NOTA' });
 
 export {

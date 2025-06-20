@@ -1,5 +1,5 @@
 export default (sequelize, DataTypes) => {
-  const Usuario = sequelize.define('Usuario', {
+  const Usuario = sequelize.define('USUARIO', {
     ID_USUARIO: {
       type: DataTypes.INTEGER,
       primaryKey: true,
@@ -8,10 +8,6 @@ export default (sequelize, DataTypes) => {
     ID_TIPO: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      references: {
-        model: 'TIPOUSUARIO',
-        key: 'ID_TIPO'
-      }
     },
     CODIGOU: {
       type: DataTypes.STRING(6),

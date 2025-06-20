@@ -8,12 +8,8 @@ export default (sequelize, DataTypes) => {
     ID_USUARIO: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      references: {
-        model: 'USUARIOS',
-        key: 'ID_USUARIO'
-      }
     },
-    NOMBRE: {
+    NOMBRES: {
       type: DataTypes.STRING(45),
       allowNull: false
     },
@@ -25,6 +21,10 @@ export default (sequelize, DataTypes) => {
       type: DataTypes.STRING(45),
       allowNull: false
     },
+    DNI: {
+      type: DataTypes.INTEGER,
+      allowNull: true
+    },    
     ESTADO: {
       type: DataTypes.STRING(45),
       defaultValue: 'activo'

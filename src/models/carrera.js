@@ -9,7 +9,7 @@ export default (sequelize, DataTypes) => {
       type: DataTypes.STRING(45),
       allowNull: false
     },
-    CODIGOU: {
+    CODIGOCA: {
       type: DataTypes.STRING(45),
       allowNull: false,
       unique: true
