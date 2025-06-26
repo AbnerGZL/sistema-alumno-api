@@ -5,10 +5,10 @@ export default (sequelize, DataTypes) => {
     primaryKey: true,
     autoIncrement: true,
   },
-  ID_ESTUDIANTE: {
+  ID_CRONOGRAMA: {
     type: DataTypes.INTEGER,
     allowNull: false,
-  },
+  },  
   ID_CURSO: {
     type: DataTypes.INTEGER,
     allowNull: false,
@@ -21,7 +21,7 @@ export default (sequelize, DataTypes) => {
     type: DataTypes.DECIMAL(5, 2),
     allowNull: false,
   },
-  CONDICION: {
+  UNIDAD: {
     type: DataTypes.STRING(45),
     allowNull: false,
   },

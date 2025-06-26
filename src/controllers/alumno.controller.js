@@ -1,4 +1,7 @@
+import { where } from "sequelize";
+import bcrypt from "bcryptjs";
 import { models } from "../models/index.js";
+import nota from "../models/nota.js";
 
 /**
  * Controlador para manejar las operaciones relacionadas con el alumno.
@@ -44,7 +47,14 @@ const matriculaPorId = async (req, res) => {
 const alumnos = async (req, res) => {
   try {
     const { Estudiante } = models;
-    const content = await Estudiante.findAll();
+    const content = await Estudiante.findAll({
+      include: [
+        {
+          model: models.Usuario,
+          attributes: ["CODIGOU"]
+        }
+      ]      
+    });
 
     if (!content || content.length === 0) {
       return res.json({ message: "No se encontraron alumnos" });
@@ -62,15 +72,31 @@ const alumnoPorId = async (req, res) => {
     const { Estudiante, Usuario } = models;
 
     const usuario = await Usuario.findOne({
-      where: { CODIGOU: req.params.id }
+      where: { CODIGOU: req.params.id }    
     });
 
+    
     if (!usuario) {
       return res.json({ message: "Código de usuario no válido" });
     }
-
+    
     const estudiante = await Estudiante.findAll({
-      where: { ID_ESTUDIANTE: usuario.ID_USUARIO }
+      where: { ID_USUARIO: usuario.ID_USUARIO },
+      include: [
+        {
+          model: models.Usuario,
+          attributes: ["CODIGOU"],
+        },
+        {
+          model: models.Matricula,
+          where: {ESTADO: 'VIGENTE'},
+          attributes: ['CICLO'],
+          include:[{
+            model: models.Carrera,
+            attributes:['NOMBRE']
+          }]
+        }
+      ]       
     });
 
     if (!estudiante || estudiante.length === 0) {
@@ -137,31 +163,70 @@ const notas = async (req, res) => {
 const notasPorId = async (req, res) => {
   try {
     const { Nota } = models;
-
-    const notas = await Nota.findAll({
-      where: { ID_MATRICULA: req.params.id },
-      include: [
-        {
-          model: models.NotaDetalle, // usa alias si lo definiste
-        }
-      ]
+    const { NotaDetalle } = models;
+    // const { userId, cursoId } = req.query;
+    
+    const estudiante = await models.Estudiante.findOne({
+      include: [{
+        model: models.Usuario,
+        where: {CODIGOU: req.params.id}
+      },
+      {
+        model: models.Matricula,
+        where: {ESTADO: 'VIGENTE'},
+      }
+    ]
     });
 
+    const notas = await models.Cronograma.findAll({
+      where: {ID_MATRICULA: estudiante.MATRICULAs[0].ID_MATRICULA},
+      include: [{
+        model: models.Nota
+      },
+      {
+        model: models.Curso
+      }
+    ]
+    });
+    // // return res.json(estudiante);
+
+    // const cronograma = await models.Cronograma.findOne({
+    //   include: [{
+    //       model: models.Curso,
+    //       where: {CODIGOCU: cursoId},
+    //   },
+    //   {
+    //       model: models.Matricula,
+    //       where: {ID_MATRICULA: estudiante.MATRICULAs[0].ID_MATRICULA}
+    //   }
+    // ]
+    // })
+    
+    // // return res.json(cronograma)
+
+    // const notas = await models.Cronograma.findOne({
+    //   where: { ID_CRONOGRAMA: cronograma.ID_CRONOGRAMA},
+    //   include: [
+    //     {
+    //       model: models.Nota,
+    //       order: [
+    //         ['FECHA_ACTUALIZACION', 'DESC']
+    //       ],
+    //       include: [{
+    //         model: models.NotaDetalle
+    //       }]
+    //     },
+    //     {
+    //       model: models.Curso
+    //     }
+    //   ]
+    // });
+    
     if (!notas || notas.length === 0) {
       return res.json({ message: "No se encontraron notas" });
     }
 
-    const resultado = notas.map(nota => ({
-      ID_NOTA: nota.ID_NOTA,
-      ID_MATRICULA: nota.ID_MATRICULA,
-      PROMEDIOT: nota.PROMEDIOT,
-      PROMEDIOP: nota.PROMEDIOP,
-      FECHA_CREACION: nota.FECHA_CREACION,
-      FECHA_MODIFICACION: nota.FECHA_ACTUALIZACION,
-      NOTAS: nota.NotaDetalles // usa el nombre exacto según el alias o la relación
-    }));
-
-    res.json(resultado);
+    res.json(notas);
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Error del servidor" });
@@ -188,6 +253,27 @@ const asistencias = async (req, res) => {
 const asistenciaPorId = async (req, res) => {
   try {
     const { Asistencia } = models;
+    const estudiante = await models.Estudiante.findOne({
+      include:[{
+        model: models.Usuario,
+        where: {CODIGOU: req.params.id}
+      },
+      {
+        model: models.Matricula,
+        where: {ESTADO: 'VIGENTE'}
+      }
+    ]
+    })
+
+    const asistencia = await models.Asistencia.findOne({
+      where: {ID_MATRICULA: estudiante.MATRICULAs[0].ID_MATRICULA},
+      order: [['FECHA', 'ASC']],
+      include: [{
+          model: models.Curso,
+      }]
+    })
+    return res.json(asistencia);
+
     const content = await Asistencia.findAll({
       where: { ID_MATRICULA: req.params.id }
     });

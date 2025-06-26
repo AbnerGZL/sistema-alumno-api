@@ -13,7 +13,7 @@ router.get('/cursos', alumnoController.cursos);
 router.get('/curso/:id', alumnoController.cursoPorId);
 
 router.get('/notas', alumnoController.notas);
-router.get('/notas/:id', alumnoController.notasPorId);
+router.get('/nota/:id', alumnoController.notasPorId);
 
 router.get('/asistencias', alumnoController.asistencias);
 router.get('/asistencia/:id', alumnoController.asistenciaPorId);

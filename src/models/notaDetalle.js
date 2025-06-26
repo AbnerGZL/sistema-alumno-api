@@ -3,17 +3,18 @@ export default (sequelize, DataTypes) => {
     ID_NOTA_DETALLE: {
       type: DataTypes.INTEGER,
       primaryKey: true,
+      autoIncrement: true,
     },
     ID_NOTA: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
     PRACTICA: {
-      type: DataTypes.STRING(45),
+      type: DataTypes.DECIMAL(5, 2),
       allowNull: false,
     },
     TEORIA: {
-      type: DataTypes.STRING(45),
+      type: DataTypes.DECIMAL(5, 2),
       allowNull: false,
     },
     FECHA: {

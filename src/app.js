@@ -9,11 +9,17 @@ import profesorApiRoutes from './routes/profesor.routes.js';
 
 const app = express();
 
+app.use(cors({
+  origin: ['http://localhost:3000',"http://example.com"],
+  credentials: true,
+  methods: ['GET', 'POST'],
+}));
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.use('/api', alumnoApiRoutes);
-app.use('/api', profesorApiRoutes);
+app.use('/api/alumno', alumnoApiRoutes);
+app.use('/api/profesor', profesorApiRoutes);
 app.use('/auth', authRoutes);
 
 if (process.env.NODE_ENV === 'production') {
@@ -27,7 +33,7 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 // app.use(cors({
-//   origin: process.env.ALLOWED_ORIGINS || '*',
+//   origin: ["http://localhost:3001","http://example.com"],
 //   methods: process.env.CORS_METHODS || 'GET',
 // }));
 

@@ -17,11 +17,11 @@ router.get('/curso/:id', profesorController.cursoPorId);
 
 router.get('/notas', profesorController.notas);
 router.get('/notas/:id', profesorController.notasPorId);
-// router.post('/notas/:id', profesorController.cargarNotas);
+router.post('/notas', profesorController.cargarNotas);
 
-router.get('/asistencias', profesorController.asistencias);
-router.get('/asistencia/:id', profesorController.asistenciaPorId);
-// router.post('/asistencias/:id', profesorController.cargarAsistencia);
+// router.get('/asistencias', profesorController.asistencias);
+router.get('/asistencias', profesorController.asistenciasPorId);
+router.post('/asistencias/:id', profesorController.cargarAsistencia);
 
 router.get('/carreras', profesorController.carreras);
 router.get('/carreras/:id', profesorController.carreraPorId);

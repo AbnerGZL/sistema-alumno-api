@@ -1,5 +1,5 @@
 export default (sequelize, DataTypes) => {
-  const TipoUsuario = sequelize.define('TIPOUSUARIO', {
+  const TipoUsuario = sequelize.define('TIPO_USUARIO', {
     ID_TIPO: {
       type: DataTypes.INTEGER,
       primaryKey: true,
@@ -14,11 +14,10 @@ export default (sequelize, DataTypes) => {
       defaultValue: true
     }
   }, {
-    tableName: 'TIPOUSUARIO',
+    tableName: 'TIPO_USUARIO',
     timestamps: true,
     createdAt: 'FECHA_CREACION',
     updatedAt: 'FECHA_ACTUALIZACION',
-    underscored: true
   });
 
   return TipoUsuario;

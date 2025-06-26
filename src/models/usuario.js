@@ -10,7 +10,7 @@ export default (sequelize, DataTypes) => {
       allowNull: false,
     },
     CODIGOU: {
-      type: DataTypes.STRING(6),
+      type: DataTypes.STRING(10),
       allowNull: false,
       unique: true
     },

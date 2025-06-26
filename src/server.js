@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 4000;
 sequelize.authenticate()
     .then(() => {
         console.log(`Conexión a ${process.env.DB_DIALECT} establecida`);
-        return sequelize.sync({ alter: false }, { force: false });
+        return sequelize.sync({ alter: false, force: false });
     })
     .then(() => {
         app.listen(PORT, () => {

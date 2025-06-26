@@ -21,6 +21,10 @@ export default (sequelize, DataTypes) => {
       type: DataTypes.STRING(45),
       defaultValue: 'ACTIVO'
     },
+    CONDICION: {
+      type: DataTypes.STRING(45),
+      allowNull: true
+    },    
     PERIODO: {
       type: DataTypes.STRING(45),
       allowNull: false
@@ -28,7 +32,7 @@ export default (sequelize, DataTypes) => {
     CICLO: {
       type: DataTypes.STRING(45),
       allowNull: false
-    },    
+    },
     ESTATUS: {
       type: DataTypes.BOOLEAN,
       defaultValue: true

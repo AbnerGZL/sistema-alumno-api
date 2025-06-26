@@ -5,7 +5,7 @@ export default (sequelize, DataTypes) => {
       primaryKey: true,
       autoIncrement: true
     },
-    ID_MATRICULA: {
+    ID_CRONOGRAMA: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
@@ -23,7 +23,7 @@ export default (sequelize, DataTypes) => {
     },
     ESTADO: {
       type: DataTypes.STRING(1),
-      allowNull: false
+      allowNull: true
     },
     ESTATUS: {
       type: DataTypes.BOOLEAN,
