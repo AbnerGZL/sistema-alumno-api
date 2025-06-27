@@ -63,6 +63,9 @@ models.Asistencia.belongsTo(models.Cronograma, { foreignKey: 'ID_CRONOGRAMA' });
 models.Cronograma.hasMany(models.Nota, { foreignKey: 'ID_CRONOGRAMA' });
 models.Nota.belongsTo(models.Cronograma, { foreignKey: 'ID_CRONOGRAMA' });
 
+models.Profesor.hasMany(models.Cronograma, { foreignKey: 'ID_PROFESOR' });
+models.Cronograma.belongsTo(models.Profesor, { foreignKey: 'ID_PROFESOR' });
+
 models.Estudiante.hasMany(models.Matricula, { foreignKey: 'ID_ESTUDIANTE' });
 models.Matricula.belongsTo(models.Estudiante, { foreignKey: 'ID_ESTUDIANTE' });
 

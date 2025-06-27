@@ -2,13 +2,14 @@ import helmet from 'helmet';
 import morgan from 'morgan';
 import express from 'express';
 import cors from 'cors';
+import cookieParser from 'cookie-parser';
 
 import authRoutes from './routes/auth.routes.js';
 import alumnoApiRoutes from './routes/alumno.routes.js';
 import profesorApiRoutes from './routes/profesor.routes.js';
-
 const app = express();
 
+app.use(cookieParser());
 app.use(cors({
   origin: ['http://localhost:3000',"http://example.com"],
   credentials: true,
