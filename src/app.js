@@ -15,6 +15,7 @@ app.use(cors({
   origin: ['http://localhost:3000',"https://sistema-alumno-front.onrender.com"],
   credentials: true,
   methods: ['GET', 'POST'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
 }));
 app.use(verificarApiKey);
 app.use(express.urlencoded({ extended: true }));
