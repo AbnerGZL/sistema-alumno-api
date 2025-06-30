@@ -24,6 +24,12 @@ if (process.env.DB_DIALECT === 'postgres') {
       dialect: process.env.DB_DIALECT,
       logging: process.env.DB_LOG === 'true',
       timezone: '-05:00',
+      dialectOptions: {
+        ssl: {
+          require: true,
+          rejectUnauthorized: false, // ⚠️ solo para desarrollo
+        }
+      } 
     }
   );
 } else if (process.env.DB_DIALECT === 'mysql') {
