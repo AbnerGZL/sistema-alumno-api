@@ -12,7 +12,7 @@ const app = express();
 
 app.use(cookieParser());
 app.use(cors({
-  origin: ['http://localhost:3000',"http://example.com"],
+  origin: ['http://localhost:3000',"https://sistema-alumno-front.onrender.com"],
   credentials: true,
   methods: ['GET', 'POST'],
 }));
