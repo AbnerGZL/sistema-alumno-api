@@ -7,6 +7,7 @@ import cookieParser from 'cookie-parser';
 import authRoutes from './routes/auth.routes.js';
 import alumnoApiRoutes from './routes/alumno.routes.js';
 import profesorApiRoutes from './routes/profesor.routes.js';
+import { verificarApiKey } from './middleware/authorization.js';
 const app = express();
 
 app.use(cookieParser());
@@ -15,7 +16,7 @@ app.use(cors({
   credentials: true,
   methods: ['GET', 'POST'],
 }));
-
+app.use(verificarApiKey);
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
