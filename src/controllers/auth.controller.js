@@ -37,7 +37,7 @@ const login = async (req, res) => {
                 return res.status(401).json({ accessToken: null, message: "Contraseña incorrecta"});
             }
 
-            const token = jwt.sign({ id: user.ID_USUARIO, role: USUARIO }, process.env.JWT_SECRET, {
+            const token = jwt.sign({ id: user.CODIGOU, role: USUARIO }, process.env.JWT_SECRET, {
                 expiresIn: 86400,
             });
 
@@ -46,7 +46,7 @@ const login = async (req, res) => {
                 secure: true,
                 sameSite: 'None',
                 maxAge: RECUERDAME ? (1000 * 60 * 60 * 1) : (1000 * 60 * 60 * 24 * 7),
-            });           
+            });
 
             return res.status(200).json({
                 ID: user.CODIGOU,
@@ -76,7 +76,7 @@ const login = async (req, res) => {
                 return res.status(401).json({ accessToken: null, message: "Contraseña incorrecta"});
             }
 
-            const token = jwt.sign({ id: user.ID_USUARIO, role: USUARIO }, process.env.JWT_SECRET, {
+            const token = jwt.sign({ id: user.CODIGOU, role: USUARIO }, process.env.JWT_SECRET, {
                 expiresIn: 86400,
             });
 
@@ -115,13 +115,13 @@ const refresh = async (req,res) => {
 
       const userId = decoded.id;
 
-      const user = await models.Usuario.findOne({where:{ID_USUARIO: userId}, include: [{model: models.TipoUsuario}]});
+      const user = await models.Usuario.findOne({where:{CODIGOU: userId}, include: [{model: models.TipoUsuario}]});
       if (!user) {
         return res.status(404).json({ message: 'Usuario no encontrado' });
       }
 
     //   return res.json(user);
-      const newToken = jwt.sign({ id: user.ID_USUARIO, role: user.TIPO_USUARIO.NOMBRE }, process.env.JWT_SECRET, {
+      const newToken = jwt.sign({ id: user.CODIGOU, role: user.TIPO_USUARIO.NOMBRE }, process.env.JWT_SECRET, {
             expiresIn: 86400,
         });
 
@@ -134,7 +134,7 @@ const refresh = async (req,res) => {
 
       return res.status(200).json({
         message: 'Token refrescado',
-        user: { id: user.ID_USUARIO }
+        user: { id: user.CODIGOU }
       });
     });
   } catch (error) {

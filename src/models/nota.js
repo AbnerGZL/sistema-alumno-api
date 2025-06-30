@@ -8,18 +8,14 @@ export default (sequelize, DataTypes) => {
   ID_CRONOGRAMA: {
     type: DataTypes.INTEGER,
     allowNull: false,
-  },  
-  ID_CURSO: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
   },
   PROMEDIOP: {
     type: DataTypes.DECIMAL(5, 2),
-    allowNull: false,
+    allowNull: true,
   },
   PROMEDIOT: {
     type: DataTypes.DECIMAL(5, 2),
-    allowNull: false,
+    allowNull: true,
   },
   UNIDAD: {
     type: DataTypes.STRING(45),

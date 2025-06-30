@@ -212,39 +212,6 @@ const notasPorId = async (req, res) => {
       }
     ]
     });
-    // // return res.json(estudiante);
-
-    // const cronograma = await models.Cronograma.findOne({
-    //   include: [{
-    //       model: models.Curso,
-    //       where: {CODIGOCU: cursoId},
-    //   },
-    //   {
-    //       model: models.Matricula,
-    //       where: {ID_MATRICULA: estudiante.MATRICULAs[0].ID_MATRICULA}
-    //   }
-    // ]
-    // })
-    
-    // // return res.json(cronograma)
-
-    // const notas = await models.Cronograma.findOne({
-    //   where: { ID_CRONOGRAMA: cronograma.ID_CRONOGRAMA},
-    //   include: [
-    //     {
-    //       model: models.Nota,
-    //       order: [
-    //         ['FECHA_ACTUALIZACION', 'DESC']
-    //       ],
-    //       include: [{
-    //         model: models.NotaDetalle
-    //       }]
-    //     },
-    //     {
-    //       model: models.Curso
-    //     }
-    //   ]
-    // });
     
     if (!notas || notas.length === 0) {
       return res.json({ message: "No se encontraron notas" });
@@ -289,6 +256,9 @@ const asistenciaPorId = async (req, res) => {
       }
     ]
     })
+    if (!estudiante || estudiante.length === 0) {
+      return res.json({ message: "No se encontró al estudiante" });
+    }    
     // return res.json(estudiante);
     const asistencias = await models.Cronograma.findAll({
       where: {ID_MATRICULA: estudiante.MATRICULAs[0].ID_MATRICULA},

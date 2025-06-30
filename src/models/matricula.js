@@ -19,7 +19,11 @@ export default (sequelize, DataTypes) => {
     },
     ESTADO: {
       type: DataTypes.STRING(45),
-      defaultValue: 'ACTIVO'
+      defaultValue: 'VIGENTE'
+    },
+    PROMEDIOF: {
+      type: DataTypes.DECIMAL(5,2),
+      allowNull: true
     },
     CONDICION: {
       type: DataTypes.STRING(45),

@@ -9,14 +9,6 @@ export default (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    ID_PROFESOR: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
-    ID_CURSO: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
     FECHA: {
       type: DataTypes.DATE,
       allowNull: false

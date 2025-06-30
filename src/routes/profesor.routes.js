@@ -10,17 +10,20 @@ router.get('/profesores', profesorController.profesores);
 router.get('/profesor/:id', profesorController.profesorPorId);
 
 router.get('/alumnos', profesorController.alumnos);
-router.get('/alumno/:id', profesorController.alumnoPorId);
+router.get('/alumno/:idprofesor/:idcurso', profesorController.alumnoPorId);
 
 router.get('/cursos', profesorController.cursos);
 router.get('/curso/:id', profesorController.cursoPorId);
 
 router.get('/notas', profesorController.notas);
-router.get('/notas/:id', profesorController.notasPorId);
+router.get('/nota/:idprofesor/:idcurso', profesorController.notasPorId);
+router.get('/nota/alumno/:idalumno/:idcurso', profesorController.notasPorAlumno);
+router.get('/detalles/nota/:id', profesorController.detallesPorNota);
 router.post('/notas', profesorController.cargarNotas);
 
-// router.get('/asistencias', profesorController.asistencias);
-router.get('/asistencias', profesorController.asistenciasPorId);
+router.get('/asistencias', profesorController.asistencias);
+router.get('/asistencia/:id', profesorController.asistenciaPorId);
+router.get('/asistencia/:idprofesor/:idcurso', profesorController.asistenciaPorCurso);
 router.post('/asistencias/:id', profesorController.cargarAsistencia);
 
 router.get('/carreras', profesorController.carreras);

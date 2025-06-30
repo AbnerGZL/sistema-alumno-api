@@ -16,9 +16,17 @@ export default (sequelize, DataTypes) => {
     ID_PROFESOR: {
       type: DataTypes.INTEGER,
       allowNull: false
-    },            
-    CURSACION: {
+    },
+    NOTAF: {
+      type: DataTypes.DECIMAL(5,2),
+      allowNull: true
+    },
+    ESTADOC: {
       type: DataTypes.STRING(45),
+      allowNull: true
+    },
+    CURSACION: {
+      type: DataTypes.INTEGER,
       allowNull: false
     },
     ESTATUS: {

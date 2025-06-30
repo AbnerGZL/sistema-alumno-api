@@ -23,6 +23,7 @@ if (process.env.DB_DIALECT === 'postgres') {
       host: process.env.DB_HOST_POSTGRE,
       dialect: process.env.DB_DIALECT,
       logging: process.env.DB_LOG === 'true',
+      timezone: '-05:00',
     }
   );
 } else if (process.env.DB_DIALECT === 'mysql') {
@@ -34,6 +35,7 @@ if (process.env.DB_DIALECT === 'postgres') {
       host: process.env.DB_HOST_MYSQL,
       dialect: process.env.DB_DIALECT,
       logging: process.env.DB_LOG === 'true',
+      timezone: '-05:00',
     }
   );
 } else {

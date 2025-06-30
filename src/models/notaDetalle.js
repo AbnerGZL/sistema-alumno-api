@@ -11,11 +11,11 @@ export default (sequelize, DataTypes) => {
     },
     PRACTICA: {
       type: DataTypes.DECIMAL(5, 2),
-      allowNull: false,
+      allowNull: true,
     },
     TEORIA: {
       type: DataTypes.DECIMAL(5, 2),
-      allowNull: false,
+      allowNull: true,
     },
     FECHA: {
       type: DataTypes.DATEONLY,
