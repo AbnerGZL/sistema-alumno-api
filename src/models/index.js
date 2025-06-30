@@ -12,7 +12,7 @@ import defineAsistencia from './asistencia.js';
 import defineNota from './nota.js';
 import definePago from './pago.js';
 import defineCronograma from './cronograma.js';
-import NotaDetalle from './NotaDetalle.js';
+import NotaDetalle from './notadetalle.js';
 
 
 const models = {
