@@ -12,7 +12,7 @@ const app = express();
 
 app.use(cookieParser());
 app.use(cors({
-  origin: ['http://localhost:3000',"https://sistema-alumno-front.onrender.com"],
+  origin: ['http://localhost:3000',"https://sistema-alumno-front.onrender.com","https://sistema-alumno-production.up.railway.app"],
   credentials: true,
   methods: ['GET', 'POST'],
   allowedHeaders: ['Content-Type', 'Authorization'],
