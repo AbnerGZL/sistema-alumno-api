@@ -18,7 +18,7 @@ export default (sequelize, DataTypes) => {
     allowNull: true,
   },
   UNIDAD: {
-    type: DataTypes.STRING(45),
+    type: DataTypes.INTEGER,
     allowNull: false,
   },
   ESTATUS: {

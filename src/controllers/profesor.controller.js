@@ -217,7 +217,7 @@ const cursoPorId = async (req, res) => {
           // attributes: ['NOMBRE', 'CODIGOCU']
         }
       ],
-      group: ['CRONOGRAMA.ID_CURSO', 'CURSO.ID_CURSO']
+      group: ['CRONOGRAMA.ID_CURSO', 'CURSO.ID_CURSO', 'CRONOGRAMA.ID_PROFESOR']
     });
 
     if (!cursos || cursos.length === 0) {
