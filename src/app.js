@@ -16,6 +16,7 @@ app.use(cors({
   credentials: true,
   methods: ['GET', 'POST'],
   allowedHeaders: ['Content-Type', 'Authorization'],
+  domain: '.onrender.com'
 }));
 app.use(verificarApiKey);
 app.use(express.urlencoded({ extended: true }));
